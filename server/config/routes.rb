@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :clients
+  resources :appointments
+  resources :professionals
+  resources :services
+
+  post '/signup', to: 'professional#create'
+  post '/signup', to: 'client#create'
+  post '/login', to: 'auth#create'
 end
