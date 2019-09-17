@@ -25,7 +25,7 @@ s4 = Service.create(professional_id: p2.id, service_name: "Edge-up", price: 15, 
 
 a1 = Appointment.create(client_id: c1.id, professional_id: p1.id, date_created: DateTime.strptime("09/11/2019 17:00", "%m/%d/%Y %H:%M"), appt_date_time: DateTime.strptime("09/21/2019 15:00", "%m/%d/%Y %H:%M"), duration: s1.duration, service_id: s1.id)
 a2 = Appointment.create(client_id: c2.id, professional_id: p2.id, date_created: DateTime.strptime("09/12/2019 17:00", "%m/%d/%Y %H:%M"), appt_date_time: DateTime.strptime("09/22/2019 12:00", "%m/%d/%Y %H:%M"), duration: s2.duration, service_id: s2.id)
-a3 = Appointment.create(client_id: c1.id, professional_id: p2.id, date_created: DateTime.strptime("09/13/2019 17:00", "%m/%d/%Y %H:%M"), appt_date_time: DateTime.strptime("09/23/2019 1:00", "%m/%d/%Y %H:%M"), duration: s1.duration, service_id: s1.id)
+a3 = Appointment.create(client_id: c1.id, professional_id: p2.id, date_created: DateTime.strptime("09/13/2019 17:00", "%m/%d/%Y %H:%M"), appt_date_time: DateTime.strptime("09/23/2019 13:00", "%m/%d/%Y %H:%M"), duration: s1.duration, service_id: s1.id)
 a4 = Appointment.create(client_id: c2.id, professional_id: p1.id, date_created: DateTime.strptime("09/14/2019 17:00", "%m/%d/%Y %H:%M"), appt_date_time: DateTime.strptime("09/24/2019 18:00", "%m/%d/%Y %H:%M"), duration: s4.duration, service_id: s4.id)
 
 
