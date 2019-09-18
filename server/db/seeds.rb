@@ -29,4 +29,9 @@ a3 = Appointment.create(client_id: c1.id, professional_id: p2.id, date_created: 
 a4 = Appointment.create(client_id: c2.id, professional_id: p1.id, date_created: DateTime.strptime("09/14/2019 17:00", "%m/%d/%Y %H:%M"), appt_date_time: DateTime.strptime("09/24/2019 18:00", "%m/%d/%Y %H:%M"), duration: s4.duration, service_id: s4.id)
 
 
+# THIS IS HOW RUBY CAN FORMAT TIME HOWEVER YOU WOULD LIKE 
+# https://ruby-doc.org/core-2.0.0/Time.html#method-i-strftime
 
+# t = Time.new(2007,11,19,8,37,48,"-06:00") #=> 2007-11-19 08:37:48 -0600
+# t.strftime("Printed on %m/%d/%Y")   #=> "Printed on 11/19/2007"
+# t.strftime("at %I:%M%p")            #=> "at 08:37AM"
