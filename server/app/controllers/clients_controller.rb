@@ -13,11 +13,15 @@ class ClientsController < ApplicationController
         }
     end
 
+    ## Sign Up ##
     def create
         @client = Client.create(client_params)
-        
-        ##THIS NEED TO BE VALIDATED/AUTH ETC. 
-        render json: @client, statu: 201
+        # byebug
+        if @client.valid?
+            render json: { client: ClientSerializer.new(@client) }, status: :created
+        else
+            render json: { error: 'failed to create account' }, status: :not_acceptable
+        end 
     end
 
     def update

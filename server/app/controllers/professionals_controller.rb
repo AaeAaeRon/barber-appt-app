@@ -13,11 +13,14 @@ class ProfessionalsController < ApplicationController
         }
     end
 
+    ## Sign Up ##
     def create
         @professional = Professional.create(professional_params)
-        
-        ##THIS NEED TO BE VALIDATED ETC. 
-        render json: @professional, statu: 201
+        if @professional.valid?
+            render json: { professionals: ProfessionalSerializer.new(@professional) }, status: :created
+        else
+            render json: { error: 'failed to create account' }, status: :not_acceptable
+        end 
     end
 
     def update

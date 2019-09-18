@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 
   post '/signup', to: 'professional#create'
   post '/signup', to: 'client#create'
-  post '/login', to: 'auth#create'
+  post '/login/client', to: 'auth#loginClient'
+  post '/login/prof', to: 'auth#loginProf'
+
 end

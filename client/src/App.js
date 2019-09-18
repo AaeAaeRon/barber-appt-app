@@ -3,6 +3,8 @@ import './App.css';
 import NavBar from './components/NavBar'
 import {BrowserRouter,Route} from 'react-router-dom'
 import SignUp from './components/SignUp'
+import Login from './components/Login'
+
 
 
 class App extends React.Component{ 
@@ -12,6 +14,9 @@ class App extends React.Component{
       <div className="App">
         <NavBar />
         <Route path='/signup' render={(routerProps)=> <SignUp {...routerProps}/>}/>
+        <Route path='/login' render={(routerProps)=> <Login {...routerProps}/>}/>
+
+
       </div>
        </BrowserRouter>
     )
