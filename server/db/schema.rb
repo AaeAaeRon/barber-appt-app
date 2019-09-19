@@ -18,10 +18,12 @@ ActiveRecord::Schema.define(version: 2019_09_16_190327) do
   create_table "appointments", force: :cascade do |t|
     t.integer "client_id"
     t.integer "professional_id"
-    t.datetime "date_created"
-    t.datetime "appt_date_time"
-    t.interval "duration"
     t.integer "service_id"
+    t.string "startDate"
+    t.string "endDate"
+    t.string "title", default: "null"
+    t.boolean "allDay", default: false
+    t.string "duration"
     t.boolean "canceled", default: false
     t.string "cancellation_reason", default: "null"
     t.datetime "created_at", precision: 6, null: false
