@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar'
+import NavBar from './mainComps/NavBar'
 import {BrowserRouter,Route} from 'react-router-dom'
-import SignUp from './components/SignUp'
-import Login from './components/Login'
+import SignUp from './mainComps/SignUp'
+import Login from './mainComps/Login'
 
 
 

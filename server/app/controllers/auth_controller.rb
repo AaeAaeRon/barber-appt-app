@@ -1,5 +1,4 @@
 class AuthController < ApplicationController
-    # skip_before_action :check_authentication, only: [:create]
 
     def loginClient
         # byebug
