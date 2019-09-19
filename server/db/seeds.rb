@@ -20,10 +20,10 @@ s2 = Service.create(professional_id: p2.id, service_name: "Haircut w/Facial Trim
 s3 = Service.create(professional_id: p1.id, service_name: "Haircut and Facial Hair w/ Razor", price: 40, description: 'Haircut with soothing hot steam towel to give that fresh shave feeling', duration: '1 hour' )
 s4 = Service.create(professional_id: p2.id, service_name: "Edge-up", price: 15, description: 'Edge the perimeter of your hair w/ razor', duration: '30 minutes' )
 
-a1 = Appointment.create(client_id: c1.id, professional_id: p1.id, service_id: s1.id, startDate: "2019-11-01T09:45", endDate: "09-19-2019 09:00", duration: s1.duration, title: s1.service_name)
-a2 = Appointment.create(client_id: c2.id, professional_id: p2.id, service_id: s2.id, startDate: "2019-11-01T09:45", endDate: "09-20-2019 12:00", duration: s2.duration, title: s2.service_name)
-a3 = Appointment.create(client_id: c1.id, professional_id: p2.id, service_id: s1.id, startDate: "2019-11-01T09:45", endDate: "09-21-2019 18:00", duration: s1.duration, title: s3.service_name)
-a4 = Appointment.create(client_id: c2.id, professional_id: p1.id, service_id: s4.id, startDate: "2019-11-01T09:45", endDate: "09-23-2019 18:00", duration: s4.duration, title: s4.service_name)
+a1 = Appointment.create(client_id: c1.id, professional_id: p1.id, service_id: s1.id, startDate: Time.new(2019,9,19,8,00,00), endDate: Time.new(2019,9,19,8,30,00), duration: s1.duration, title: s1.service_name)
+a2 = Appointment.create(client_id: c2.id, professional_id: p2.id, service_id: s2.id, startDate: Time.new(2019,9,20,10,00,00), endDate: Time.new(2019,9,20,11,00,00), duration: s2.duration, title: s2.service_name)
+a3 = Appointment.create(client_id: c1.id, professional_id: p2.id, service_id: s1.id, startDate: Time.new(2019,9,22,12,30,00), endDate: Time.new(2019,9,22,1,15,00), duration: s1.duration, title: s3.service_name)
+a4 = Appointment.create(client_id: c2.id, professional_id: p1.id, service_id: s4.id, startDate: Time.new(2019,9,26,16,00,00), endDate: Time.new(2019,9,26,16,40), duration: s4.duration, title: s4.service_name)
 
 
 # THIS IS HOW RUBY CAN FORMAT TIME HOWEVER YOU WOULD LIKE 
