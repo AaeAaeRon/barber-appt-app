@@ -57,6 +57,7 @@ export default class SignUp extends React.Component{
     render(){
         return(
             <div>
+            
                 <form onSubmit={(e) => this.signup(e)}>
                     First name:<br/>
                     <input onChange={this.handleChange} type="text" name="first_name" />

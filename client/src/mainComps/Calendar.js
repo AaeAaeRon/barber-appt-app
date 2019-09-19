@@ -1,33 +1,113 @@
 import React from 'react';
 import {BrowserRouter,Route} from 'react-router-dom';
-import { Scheduler, DayView, WeekView, MonthView, Appointments, DateNavigator, Toolbar,  } from '@devexpress/dx-react-scheduler-material-ui';
+import { Scheduler, DayView, WeekView, MonthView, Appointments, DateNavigator, Toolbar,  ViewSwitcher, } from '@devexpress/dx-react-scheduler-material-ui';
 import 'typeface-roboto';
 import Paper from '@material-ui/core/Paper';
 import Icon from '@material-ui/core/Icon';
+import { withStyles } from '@material-ui/core/styles';
 import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
+const style = theme => ({
+    todayCell: {
+      backgroundColor: fade(theme.palette.primary.main, 0.1),
+      '&:hover': {
+        backgroundColor: fade(theme.palette.primary.main, 0.14),
+      },
+      '&:focus': {
+        backgroundColor: fade(theme.palette.primary.main, 0.16),
+      },
+    },
+    weekendCell: {
+      backgroundColor: fade(theme.palette.action.disabledBackground, 0.04),
+      '&:hover': {
+        backgroundColor: fade(theme.palette.action.disabledBackground, 0.04),
+      },
+      '&:focus': {
+        backgroundColor: fade(theme.palette.action.disabledBackground, 0.04),
+      },
+    },
+    today: {
+      backgroundColor: fade(theme.palette.primary.main, 0.16),
+    },
+    weekend: {
+      backgroundColor: fade(theme.palette.action.disabledBackground, 0.06),
+    },
+});
+
+const TimeTableCellBase = ({ classes, ...restProps }) => {
+    const { startDate } = restProps;
+    const date = new Date(startDate);
+    if (date.getDate() === new Date().getDate()) {
+      return <WeekView.TimeTableCell {...restProps} className={classes.todayCell} />;
+    } if (date.getDay() === 0 || date.getDay() === 6) {
+      return <WeekView.TimeTableCell {...restProps} className={classes.weekendCell} />;
+    } return <WeekView.TimeTableCell {...restProps} />;
+};
+
+const TimeTableCell = withStyles(style, { name: 'TimeTableCell' })(TimeTableCellBase);
+
+const DayScaleCellBase = ({ classes, ...restProps }) => {
+  const { startDate, today } = restProps;
+  if (today) {
+    return <WeekView.DayScaleCell {...restProps} className={classes.today} />;
+  } if (startDate.getDay() === 0 || startDate.getDay() === 6) {
+    return <WeekView.DayScaleCell {...restProps} className={classes.weekend} />;
+  } return <WeekView.DayScaleCell {...restProps} />;
+};
+
+const DayScaleCell = withStyles(style, { name: 'DayScaleCell' })(DayScaleCellBase);
 
 
 export default class Calendar extends React.Component{
+
+    // constructor(props) {
+    //     super(props);
+    
+    //     this.state = {
+    //       currentViewName: 'work-week',
+    //     };
+    //     this.currentViewNameChange = (currentViewName) => {
+    //       this.setState({ currentViewName });
+    //     };
+    // }
+
     render(){
+        // const { currentViewName } = this.state;
         return(
             
             <BrowserRouter>
             <div>
             <Paper >
                 <Scheduler
+                    height={660}
                     data={this.props.data}
                     // data = {[
                     // { startDate: '2019-09-19 10:00', endDate: '2019-09-19 11:00', title: 'Meeting' },
                     // { startDate: '2019-09-20 12:00', endDate: '2019-09-19 13:30', title: 'Go to a gym' },
                     // ]}
                     >
-                    {/* <Toolbar /> */}
-                    {/* <ViewState /> */}
-                    <Route path='/schedule/wv' render={(routerProps)=> <WeekView {...routerProps}/>}/>
-                    <Route path='/schedule/dv' render={(routerProps)=> <DayView {...routerProps}/>}/>
-                    <Route path='/schedule/mv' render={(routerProps)=> <MonthView {...routerProps}/>}/>
+                    
+                    <ViewState 
+                        defaultCurrentViewName="Week"
+                    />
 
+
+                    <WeekView startDayHour={8}
+                        endDayHour={18}
+                        timeTableCellComponent={TimeTableCell}
+                        dayScaleCellComponent={DayScaleCell}
+                        
+                    />
+
+                    <DayView startDayHour={8}
+                        endDayHour={18}
+                    />
+
+                    <MonthView/>
+                    
+                    <Toolbar />
+                    <ViewSwitcher />
                     <Appointments />
                 </Scheduler>
             </Paper>
