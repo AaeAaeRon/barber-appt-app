@@ -4,7 +4,7 @@ import NavBar from './mainComps/NavBar'
 import {BrowserRouter,Route} from 'react-router-dom'
 import SignUp from './mainComps/SignUp'
 import Login from './mainComps/Login'
-import Calendar from './mainComps/Calendar'
+import CalendarContainer from './containers/CalendarContainer.js'
 
 
 
@@ -38,7 +38,7 @@ class App extends React.Component{
         <NavBar />
         <Route path='/signup' render={(routerProps)=> <SignUp {...routerProps}/>}/>
         <Route path='/login' render={(routerProps)=> <Login {...routerProps}/>}/>
-        <Route path='/schedule' render={(routerProps)=> <Calendar data={this.state.data} {...routerProps}/>}/>
+        <Route path='/schedule' render={(routerProps)=> <CalendarContainer data={this.state.data} {...routerProps}/>}/>
 
       </div>
        </BrowserRouter>

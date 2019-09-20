@@ -22,7 +22,7 @@ s4 = Service.create(professional_id: p2.id, service_name: "Edge-up", price: 15, 
 
 a1 = Appointment.create(client_id: c1.id, professional_id: p1.id, service_id: s1.id, startDate: Time.new(2019,9,19,8,00,00), endDate: Time.new(2019,9,19,8,30,00), duration: s1.duration, title: s1.service_name)
 a2 = Appointment.create(client_id: c2.id, professional_id: p2.id, service_id: s2.id, startDate: Time.new(2019,9,20,10,00,00), endDate: Time.new(2019,9,20,11,00,00), duration: s2.duration, title: s2.service_name)
-a3 = Appointment.create(client_id: c1.id, professional_id: p2.id, service_id: s1.id, startDate: Time.new(2019,9,22,12,30,00), endDate: Time.new(2019,9,22,1,15,00), duration: s1.duration, title: s3.service_name)
+a3 = Appointment.create(client_id: c1.id, professional_id: p2.id, service_id: s1.id, startDate: Time.new(2019,9,22,12,30,00), endDate: Time.new(2019,9,24,1,15,00), duration: s1.duration, title: s3.service_name)
 a4 = Appointment.create(client_id: c2.id, professional_id: p1.id, service_id: s4.id, startDate: Time.new(2019,9,26,16,00,00), endDate: Time.new(2019,9,26,16,40), duration: s4.duration, title: s4.service_name)
 
 
