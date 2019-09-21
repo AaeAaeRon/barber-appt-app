@@ -62,50 +62,50 @@ const DayScaleCellBase = ({ classes, ...restProps }) => {
 const DayScaleCell = withStyles(style, { name: 'DayScaleCell' })(DayScaleCellBase);
 
 const styles = theme => ({
-    contentItem: {
-      paddingLeft: 0,
-    },
-    contentItemValue: {
-      padding: 0,
-    },
-    contentItemIcon: {
-      marginRight: theme.spacing(1),
-    },
-    flexibleSpace: {
-      margin: '0 auto 0 0',
-    },
-    prioritySelector: {
-      marginLeft: theme.spacing(2),
-      minWidth: 140,
-    },
-    prioritySelectorItem: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    priorityBullet: {
-      borderRadius: '50%',
-      width: theme.spacing(2),
-      height: theme.spacing(2),
-      marginRight: theme.spacing(2),
-      display: 'inline-block',
-    },
-    defaultBullet: {
-      background: theme.palette.divider,
-    },
-    tooltipContent: {
-      paddingLeft: theme.spacing(2.2),
-      paddingRight: theme.spacing(2.2),
-    },
+  contentItem: {
+    paddingLeft: 0,
+  },
+  contentItemValue: {
+    padding: 0,
+  },
+  contentItemIcon: {
+    marginRight: theme.spacing(1),
+  },
+  flexibleSpace: {
+    margin: '0 auto 0 0',
+  },
+  prioritySelector: {
+    marginLeft: theme.spacing(2),
+    minWidth: 140,
+  },
+  prioritySelectorItem: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  priorityBullet: {
+    borderRadius: '50%',
+    width: theme.spacing(2),
+    height: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    display: 'inline-block',
+  },
+  defaultBullet: {
+    background: theme.palette.divider,
+  },
+  tooltipContent: {
+    paddingLeft: theme.spacing(2.2),
+    paddingRight: theme.spacing(2.2),
+  },
 });
 
 const EditButton = withStyles(styles, { name: 'EditButton' })(
-    ({ classes, id, ...restProps }) => (
-      <AppointmentTooltip.CommandButton
-        {...restProps}
-        {...id === 'open' ? { className: 'edit-button' } : null}
-        id={id}
-      />
-    ),
+  ({ classes, id, ...restProps }) => (
+    <AppointmentTooltip.CommandButton
+      {...restProps}
+      {...id === 'open' ? { className: 'edit-button' } : null}
+      id={id}
+    />
+  ),
 );
 
 
@@ -114,77 +114,66 @@ const EditButton = withStyles(styles, { name: 'EditButton' })(
 
 export default class Calendar extends React.Component{
 
-    // constructor(props) {
-    //     super(props);
-    
-    //     this.state = {
-    //       currentViewName: 'work-week',
-    //     };
-    //     this.currentViewNameChange = (currentViewName) => {
-    //       this.setState({ currentViewName });
-    //     };
-    // }
-
   render(){
 
 
-  // const { currentViewName } = this.state;
-  return(
+    return(
+        
+      <div>
+        <Scheduler
+          height={593}
+          data={this.props.data}
+          // data = {[
+          // { startDate: '2019-09-19 10:00', endDate: '2019-09-19 11:00', title: 'Meeting' },
+          // { startDate: '2019-09-20 12:00', endDate: '2019-09-19 13:30', title: 'Go to a gym' },
+          // ]}
+          >
+          
+          <ViewState 
+            defaultCurrentViewName="Week"
+          />
+
+
+          <WeekView 
+            startDayHour={8}
+            endDayHour={18}
+            timeTableCellComponent={TimeTableCell}
+            dayScaleCellComponent={DayScaleCell}
+          />
+
+          <DayView 
+            startDayHour={8}
+            endDayHour={18}
+          />
+
+          <MonthView 
+            // timeTableCellComponent={TimeTableCell}
+            dayScaleCellComponent={DayScaleCell}
+          />
+          
+          <Toolbar />
+          <TodayButton />
+          <DateNavigator />
+          {/* <AllDayPanel /> */}
+          <ViewSwitcher />
+          <Appointments />
+          {/* <EditingState /> */}
+          <AppointmentTooltip 
+            data={this.props.appt}
+            commandButtonComponent={EditButton}
+            showOpenButton
+            showCloseButton
+          />
+          
+
+          {/* <AppointmentForm readOnly={true}/> try to conditionally render the true (readonly)
+          on already made appts, not new forms as well or everything is read only and you create 
+          an appt in a different form and it saves to db-updating calendar*/}
+          {/* <AppointmentForm  /> */}
+        </Scheduler>
       
-    // <BrowserRouter>
-    <div>
-      <Scheduler
-        height={593}
-        data={this.props.data}
-        // data = {[
-        // { startDate: '2019-09-19 10:00', endDate: '2019-09-19 11:00', title: 'Meeting' },
-        // { startDate: '2019-09-20 12:00', endDate: '2019-09-19 13:30', title: 'Go to a gym' },
-        // ]}
-        >
-        
-        <ViewState 
-          // currentViewName={this.state.currentViewName}
-          defaultCurrentViewName="Week"
-        />
-
-
-        <WeekView startDayHour={8}
-          endDayHour={18}
-          timeTableCellComponent={TimeTableCell}
-          dayScaleCellComponent={DayScaleCell}
-        />
-
-        <DayView startDayHour={8}
-          endDayHour={18}
-        />
-
-        <MonthView timeTableCellComponent={TimeTableCell}
-          dayScaleCellComponent={DayScaleCell}
-        />
-        
-        <Toolbar />
-        <TodayButton />
-        <DateNavigator />
-        {/* <AllDayPanel /> */}
-        <ViewSwitcher />
-        <Appointments />
-        {/* <EditingState /> */}
-        <AppointmentTooltip data={this.props.appt}
-          commandButtonComponent={EditButton}
-          showOpenButton
-          showCloseButton
-        />
-        
-
-        {/* <AppointmentForm readOnly={true}/> try to conditionally render the true (readonly)
-        on already made appts, not new forms as well or everything is read only and you create 
-        an appt in a different form and it saves to db-updating calendar*/}
-        {/* <AppointmentForm  /> */}
-        {/* appointmentData={this.props.appt.service.description} */}
-      </Scheduler>
-    
-    </div>
-    // </BrowserRouter>
-  )
+      </div>
+      // </BrowserRouter>
+    )
   }
 }
