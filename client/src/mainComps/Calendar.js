@@ -125,65 +125,66 @@ export default class Calendar extends React.Component{
     //     };
     // }
 
-    render(){
+  render(){
+
+
+  // const { currentViewName } = this.state;
+  return(
+      
+    // <BrowserRouter>
+    <div>
+      <Scheduler
+        height={593}
+        data={this.props.data}
+        // data = {[
+        // { startDate: '2019-09-19 10:00', endDate: '2019-09-19 11:00', title: 'Meeting' },
+        // { startDate: '2019-09-20 12:00', endDate: '2019-09-19 13:30', title: 'Go to a gym' },
+        // ]}
+        >
+        
+        <ViewState 
+          // currentViewName={this.state.currentViewName}
+          defaultCurrentViewName="Week"
+        />
+
+
+        <WeekView startDayHour={8}
+          endDayHour={18}
+          timeTableCellComponent={TimeTableCell}
+          dayScaleCellComponent={DayScaleCell}
+        />
+
+        <DayView startDayHour={8}
+          endDayHour={18}
+        />
+
+        <MonthView timeTableCellComponent={TimeTableCell}
+          dayScaleCellComponent={DayScaleCell}
+        />
+        
+        <Toolbar />
+        <TodayButton />
+        <DateNavigator />
+        {/* <AllDayPanel /> */}
+        <ViewSwitcher />
+        <Appointments />
+        {/* <EditingState /> */}
+        <AppointmentTooltip data={this.props.appt}
+          commandButtonComponent={EditButton}
+          showOpenButton
+          showCloseButton
+        />
         
 
-        // const { currentViewName } = this.state;
-        return(
-            
-            // <BrowserRouter>
-            <div>
-                <Scheduler
-                    height={593}
-                    data={this.props.data}
-                    // data = {[
-                    // { startDate: '2019-09-19 10:00', endDate: '2019-09-19 11:00', title: 'Meeting' },
-                    // { startDate: '2019-09-20 12:00', endDate: '2019-09-19 13:30', title: 'Go to a gym' },
-                    // ]}
-                    >
-                    
-                    <ViewState 
-                        // currentViewName={this.state.currentViewName}
-                        defaultCurrentViewName="Week"
-                    />
-
-
-                    <WeekView startDayHour={8}
-                        endDayHour={18}
-                        timeTableCellComponent={TimeTableCell}
-                        dayScaleCellComponent={DayScaleCell}
-                        
-                    />
-
-                    <DayView startDayHour={8}
-                        endDayHour={18}
-                    />
-
-                    <MonthView/>
-                    
-                    <Toolbar />
-                    <TodayButton />
-                    <DateNavigator />
-                    {/* <AllDayPanel /> */}
-                    <ViewSwitcher />
-                    <Appointments />
-                    {/* <EditingState /> */}
-                    <AppointmentTooltip data={this.props.appt}
-                        commandButtonComponent={EditButton}
-                        showOpenButton
-                        showCloseButton
-                    />
-                    
-
-                    {/* <AppointmentForm readOnly={true}/> try to conditionally render the true (readonly)
-                    on already made appts, not new forms as well or everything is read only and you create 
-                    an appt in a different form and it saves to db-updating calendar*/}
-                    {/* <AppointmentForm  /> */}
-                {/* appointmentData={this.props.appt.service.description} */}
-                </Scheduler>
-            
-            </div>
-            // </BrowserRouter>
-        )
-    }
+        {/* <AppointmentForm readOnly={true}/> try to conditionally render the true (readonly)
+        on already made appts, not new forms as well or everything is read only and you create 
+        an appt in a different form and it saves to db-updating calendar*/}
+        {/* <AppointmentForm  /> */}
+        {/* appointmentData={this.props.appt.service.description} */}
+      </Scheduler>
+    
+    </div>
+    // </BrowserRouter>
+  )
+  }
 }
