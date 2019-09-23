@@ -1,4 +1,7 @@
 class ServicesController < ApplicationController
+
+    before_action :check_authentication
+
     def index
         @services = Service.all
         render json: @services 
@@ -14,8 +17,6 @@ class ServicesController < ApplicationController
 
     def create
         @service = Service.create(service_params)
-        
-        ##THIS NEED TO BE VALIDATED ETC. 
         render json: @service, statu: 201
     end
 

@@ -120,6 +120,7 @@ export default class Calendar extends React.Component{
     return(
         
       <div>
+      <Paper >
         <Scheduler
           height={593}
           data={this.props.data}
@@ -147,8 +148,6 @@ export default class Calendar extends React.Component{
           />
 
           <MonthView 
-            // timeTableCellComponent={TimeTableCell}
-            dayScaleCellComponent={DayScaleCell}
           />
           
           <Toolbar />
@@ -171,7 +170,7 @@ export default class Calendar extends React.Component{
           an appt in a different form and it saves to db-updating calendar*/}
           {/* <AppointmentForm  /> */}
         </Scheduler>
-      
+      </Paper>
       </div>
       // </BrowserRouter>
     )

@@ -10,7 +10,7 @@ Appointment.destroy_all
 
 
 c1 = Client.create(first_name: 'Aaron', last_name: 'Briscoe', mobile_num: '281-217-2419', email: 'abriscoe2008@gmail.com', password: 'password')
-c2 = Client.create(first_name: 'Betsy', last_name: 'Hank', mobile_num: '713-235-8392', email: 'betsy@yahoo.com', password: 'password')
+c2 = Client.create(first_name: 'John', last_name: 'Smith', mobile_num: '713-235-8392', email: 'js@yahoo.com', password: 'password')
 
 p1 = Professional.create(first_name: 'James', last_name: 'Smith', mobile_num: '713-123-2684', email: 'js@gmail.com', password: 'password')
 p2 = Professional.create(first_name: 'Blake', last_name: 'Randall', mobile_num: '832-934-9173', email: 'br@gmail.com', password: 'password')
@@ -20,10 +20,10 @@ s2 = Service.create(professional_id: p2.id, service_name: "Haircut w/Facial Trim
 s3 = Service.create(professional_id: p1.id, service_name: "Haircut and Facial Hair w/ Razor", price: 40, description: 'Haircut with soothing hot steam towel to give that fresh shave feeling', duration: '1 hour' )
 s4 = Service.create(professional_id: p2.id, service_name: "Edge-up", price: 15, description: 'Edge the perimeter of your hair w/ razor', duration: '30 minutes' )
 
-a1 = Appointment.create(client_id: c1.id, professional_id: p1.id, service_id: s1.id, startDate: Time.new(2019,9,19,8,00,00), endDate: Time.new(2019,9,19,8,30,00), duration: s1.duration, title: s1.service_name)
-a2 = Appointment.create(client_id: c2.id, professional_id: p2.id, service_id: s2.id, startDate: Time.new(2019,9,20,10,00,00), endDate: Time.new(2019,9,20,11,00,00), duration: s2.duration, title: s2.service_name)
-a3 = Appointment.create(client_id: c1.id, professional_id: p2.id, service_id: s1.id, startDate: Time.new(2019,9,22,12,30,00), endDate: Time.new(2019,9,24,1,15,00), duration: s1.duration, title: s3.service_name)
-a4 = Appointment.create(client_id: c2.id, professional_id: p1.id, service_id: s4.id, startDate: Time.new(2019,9,26,16,00,00), endDate: Time.new(2019,9,26,16,40), duration: s4.duration, title: s4.service_name)
+a1 = Appointment.create(client_id: c1.id, professional_id: p1.id, service_id: s1.id, startDate: Time.new(2019,9,23,8,00,00), endDate: Time.new(2019,9,23,8,30,00), duration: s1.duration, title: s1.service_name)
+a2 = Appointment.create(client_id: c2.id, professional_id: p2.id, service_id: s2.id, startDate: Time.new(2019,9,25,10,00,00), endDate: Time.new(2019,9,25,11,00,00), duration: s2.duration, title: s2.service_name)
+a3 = Appointment.create(client_id: c1.id, professional_id: p2.id, service_id: s1.id, startDate: Time.new(2019,9,27,12,30,00), endDate: Time.new(2019,9,27,13,15,00), duration: s1.duration, title: s3.service_name)
+a4 = Appointment.create(client_id: c2.id, professional_id: p1.id, service_id: s4.id, startDate: Time.new(2019,9,28,16,00,00), endDate: Time.new(2019,9,28,16,40), duration: s4.duration, title: s4.service_name)
 
 
 # THIS IS HOW RUBY CAN FORMAT TIME HOWEVER YOU WOULD LIKE 

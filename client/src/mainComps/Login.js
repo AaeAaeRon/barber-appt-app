@@ -5,7 +5,8 @@ export default class Login extends React.Component{
     constructor(){
         super()
         this.state = {
-            account_type: "client"
+            account_type: "client",
+            current_user: ''
         }
     }
 
@@ -39,8 +40,12 @@ export default class Login extends React.Component{
         })
         .then(res => res.json())
         .then(data => {
-            // localStorage.token = data.token   SAME THING AS BELOW
+            // debugger
+            // localStorage.token = data.token SAME THING AS BELOW
             localStorage.setItem('token', data.token)
+            this.setState({
+                current_user: data.id
+            })
         })
     }
 

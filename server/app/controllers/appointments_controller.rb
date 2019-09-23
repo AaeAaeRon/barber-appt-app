@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
 
+    before_action :check_authentication
     
     def index
         @appointments = Appointment.all
@@ -8,7 +9,7 @@ class AppointmentsController < ApplicationController
 
     def show
         @appointment = Appointment.find(params[:id])
-        render json: @appointment, :only =>[:date_created, :appt_date_time, :canceled, :cancellation_reason], :include => {
+        render json: @appointment, :only =>[:startDate, :endDate, :canceled, :cancellation_reason], :include => {
             :client => {:only => [:first_name, :last_name]},
             :professional => {:only => [:first_name, :last_name]},
             :service => {:only => [:service_name, :price, :duration]}

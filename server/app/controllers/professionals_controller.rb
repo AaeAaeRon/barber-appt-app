@@ -1,4 +1,8 @@
 class ProfessionalsController < ApplicationController
+
+    skip_before_action :check_authentication, only: [:create]
+
+
     def index
         @professionals = Professional.all
         render json: @professionals 
@@ -7,13 +11,13 @@ class ProfessionalsController < ApplicationController
     def show
         @professional = Professional.find(params[:id])
         render json: @professional, :only =>[:first_name, :last_name, :mobile_num, :email], :include => {
-            :appointments => {:only => [:appt_date_time]},
+            :appointments => {:only => [:starDate]},
             :clients => {:only => [:first_name, :last_name]},
             :services => {:only => [:service_name, :price, :duration]}
         }
     end
 
-    ## Sign Up ##
+    ## Sign Up CREATES NEW PROFESSIONAL ##
     def create
         @professional = Professional.create(professional_params)
         if @professional.valid?

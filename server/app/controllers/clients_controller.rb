@@ -1,4 +1,8 @@
 class ClientsController < ApplicationController
+
+    skip_before_action :check_authentication, only: [:create]
+
+
     def index
         @clients = Client.all
         render json: @clients 
@@ -7,13 +11,13 @@ class ClientsController < ApplicationController
     def show
         @client = Client.find(params[:id])
         render json: @client, :only =>[:first_name, :last_name, :mobile_num, :email], :include => {
-            :appointments => {:only => [:appt_date_time]},
+            :appointments => {:only => [:starDate]},
             :professionals => {:only => [:first_name, :last_name]},
             :services => {:only => [:service_name, :price, :duration]}
         }
     end
 
-    ## Sign Up ##
+    ## Sign Up CREATES NEW CLIENTS ##
     def create
         @client = Client.create(client_params)
         # byebug
