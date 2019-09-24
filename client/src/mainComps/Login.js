@@ -6,7 +6,8 @@ export default class Login extends React.Component{
         super()
         this.state = {
             account_type: "client",
-            current_user: ''
+            currentUser: '',
+            userType: '',
         }
     }
 
@@ -43,13 +44,14 @@ export default class Login extends React.Component{
             // debugger
             // localStorage.token = data.token SAME THING AS BELOW
             localStorage.setItem('token', data.token)
-            this.setState({
-                current_user: data.id
-            })
+            localStorage.setItem('userId', data.id)
+            localStorage.setItem('userType', data.type)
         })
     }
 
     render(){
+    // console.log(this)
+
         return(
             <div>
                 <form onSubmit={(e) => this.login(e)}>

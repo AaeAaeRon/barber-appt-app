@@ -5,9 +5,10 @@ import NewServForm from '../forms/NewServForm'
 
 export default class ServicesContainer extends React.Component{
     render(){
+        // console.log(this.props)
         return(
             <div>
-                <NewServForm />
+                <NewServForm currentUser={this.props.currentUser}/>
                 {localStorage.token
                 ? this.props.servs.map(serv => <Service service={serv}/>)
                 : <h3>Please log in</h3> }

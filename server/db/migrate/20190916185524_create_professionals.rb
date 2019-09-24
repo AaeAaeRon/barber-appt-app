@@ -6,7 +6,7 @@ class CreateProfessionals < ActiveRecord::Migration[6.0]
       t.string :mobile_num
       t.string :email
       t.string :password_digest
-
+      t.string :userType, :default => 'p'
       t.timestamps
     end
   end

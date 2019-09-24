@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
     def auth_header
         # { 'Authorization': 'Bearer <token>' }
-        request.headers['Authorization']
+        return request.headers['Authorization']
         # byebug
     end
     
@@ -32,6 +32,7 @@ class ApplicationController < ActionController::Base
     
     def decoded_token
         # token => "eyJhbGciOiJIUzI1NiJ9.eyJiZWVmIjoic3RlYWsifQ._IBTHTLGX35ZJWTCcY30tLmwU9arwdpNVxtVU0NpAuI"
+        # byebug
         if auth_header
           token = auth_header.split(' ')[1]
             # byebug
@@ -47,11 +48,11 @@ class ApplicationController < ActionController::Base
     end
     
     def check_authentication
-        render json: { error: 'Please log in' }, status: 401 if !logged_in?
+        render json: { error: 'Please log iiiiiiin' }, status: 401 if !logged_in?
     end
     
     def logged_in?
-        !!current_client || !!current_prof
+      !!current_client || !!current_prof
     end
 
 end

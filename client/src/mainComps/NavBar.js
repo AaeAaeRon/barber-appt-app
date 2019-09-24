@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route, Link, withRouter} from 'react-router-dom'
-
+import Calendar from './Calendar'
 
 
 class NavBar extends React.Component{
@@ -18,6 +18,7 @@ class NavBar extends React.Component{
 
     logout = () => {
         localStorage.clear()
+
     }
 
 
@@ -25,16 +26,16 @@ class NavBar extends React.Component{
         return(
             <BrowserRouter>
             <div>
-              <Link to="/schedule">calendar</Link><br />
-              <Link to="/signup">signup</Link><br />
-              <Link to="/login">login</Link><br />
-              <Link to="/clients">clients</Link><br />
-              <Link to="/professionals">profs</Link><br />
-              <Link to="/services">services</Link><br />
-              <Link to="/services/new">add new service</Link><br />
-              <Link to="/appointments">appts</Link><br />
+                <a href= '/schedule' > calendar </a><br />
+                <a href= '/signup' > sign up </a><br />
+                <a href= '/login' > login </a><br />
+                <a href= '/clients' > clients </a><br />
+                <a href= '/professionals' > pros </a><br />
+                <a href= '/services' > services </a><br />
+                <a href= '/services/new' > add new service </a><br />
+                <a href= '/appointments' > appts </a><br />
 
-              <button onClick={this.logout}> logout </button><br />
+                <button onClick={this.logout}> logout </button><br />
 
 
             </div>

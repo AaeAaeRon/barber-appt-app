@@ -120,7 +120,8 @@ export default class Calendar extends React.Component{
     return(
         
       <div>
-      <Paper >
+      {localStorage.token
+      ?<Paper >
         <Scheduler
           height={593}
           data={this.props.data}
@@ -171,6 +172,9 @@ export default class Calendar extends React.Component{
           {/* <AppointmentForm  /> */}
         </Scheduler>
       </Paper>
+      :<h3>Please log in</h3>
+      }
+      
       </div>
       // </BrowserRouter>
     )

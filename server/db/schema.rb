@@ -17,8 +17,12 @@ ActiveRecord::Schema.define(version: 2019_09_16_190327) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "client_id"
+    t.string "c_name"
     t.integer "professional_id"
+    t.string "p_name"
     t.integer "service_id"
+    t.string "s_name"
+    t.integer "price"
     t.string "startDate"
     t.string "endDate"
     t.string "title", default: "null"
@@ -36,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_190327) do
     t.string "mobile_num"
     t.string "email"
     t.string "password_digest"
+    t.string "userType", default: "c"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -46,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_190327) do
     t.string "mobile_num"
     t.string "email"
     t.string "password_digest"
+    t.string "userType", default: "p"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
