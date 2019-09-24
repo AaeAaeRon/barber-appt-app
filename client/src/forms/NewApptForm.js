@@ -1,29 +1,48 @@
 import React from 'react';
 
 export default class AppointForm extends React.Component{
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    ///////////////NEW SERVICE FORM SUBMIT////////////////
+    addAppt = (e) => {
+        e.preventDefault()
+        console.log('hi')
+        fetch('http://localhost:3000/services', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify({
+            // professional_id: localStorage.userId,
+            // service_name: this.state.service_name,
+            // price: this.state.price,
+            // description: this.state.description,
+            // duration: this.state.duration,
+        })
+        })
+        .then(res => res.json())
+        .then(console.log)
+    }
     render(){
         return(
             <div>
-                <form onSubmit={(e) => this.signup(e)}>
-                    First name:<br/>
-                    <input onChange={this.handleChange} type="text" name="first_name" />
+                <form onSubmit={(e) => this.addAppt(e)}>
+                    Appt time:<br/>
+                    <input onChange={this.handleChange} type="text" name="startDate" />
                     <br/>
-                    Last name:<br/>
-                    <input onChange={this.handleChange} type="text" name="last_name" />
+                    End Time:<br/>
+                    <input onChange={this.handleChange} type="text" name="endDate" />
                     <br/>
-                    Mobile number:<br/>
-                    <input onChange={this.handleChange} type="tel" name="mobile_num" />
-                    <br/>
-                    email:<br/>
-                    <input onChange={this.handleChange} type="text" name="email" />
-                    <br/>
-                    password:<br/> 
-                    <input onChange={this.handleChange} type="password" name="password"/>
-                    <br/>
-                    
-                    <p>Is this a Client or Professional Account?</p>
-                    <input  type="radio" defaultChecked='true' id ='client' name="account_type" /> Client<br/>
-                    <input  type="radio" id = 'professsional' name="account_type" /> Professional<br/>
+                    <h4>Service</h4>
+                    <select  id='firstList' name='firstList' onChange={this.handleChange} onClick={this.getServs}>
+                    </select>
+                    <br />
                     <input type="submit" value="Submit"/>
                 </form> 
 

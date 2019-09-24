@@ -8,7 +8,7 @@ export default class ServicesContainer extends React.Component{
         // console.log(this.props)
         return(
             <div>
-                <NewServForm currentUser={this.props.currentUser}/>
+                <NewServForm />
                 {localStorage.token
                 ? this.props.servs.map(serv => <Service service={serv}/>)
                 : <h3>Please log in</h3> }

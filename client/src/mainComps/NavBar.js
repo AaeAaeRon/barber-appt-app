@@ -5,16 +5,6 @@ import Calendar from './Calendar'
 
 class NavBar extends React.Component{
 
-    // showAppt = () => {
-    //     fetch('http://localhost:3000/appointments', {
-    //         method: 'GET',
-    //         headers: {
-    //             Authorization: `Bearer ${localStorage.token}`
-    //         }
-    //     })
-    //     .then(res=> res.json())
-    //     .then(console.log)
-    // }
 
     logout = () => {
         localStorage.clear()
@@ -34,10 +24,8 @@ class NavBar extends React.Component{
                 <a href= '/services' > services </a><br />
                 <a href= '/services/new' > add new service </a><br />
                 <a href= '/appointments' > appts </a><br />
-
+                <a href= '/appointments/new' > add new appt </a><br />
                 <button onClick={this.logout}> logout </button><br />
-
-
             </div>
             </BrowserRouter>
         )

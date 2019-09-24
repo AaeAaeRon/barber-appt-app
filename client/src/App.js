@@ -8,7 +8,6 @@ import Calendar from './mainComps/Calendar'
 import ClientContainer from './containers/ClientContainer'
 import ProfContainer from './containers/ProfContainer'
 import ServicesContainer from './containers/ServicesContainer'
-import AppointForm from './forms/NewApptForm';
 import ApptContainer from './containers/ApptContainer'
 
 class App extends React.Component{ 
@@ -95,25 +94,25 @@ class App extends React.Component{
       })
     })
 
-    ////////////////////////SERVICES////////////////////////////
-    fetch('http://localhost:3000/services', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    })
-    .then(res => res.json())
-    .then(servs => {
-      // userType === "p"
-      // ?servs.filter(serv =>{return serv.professional_id === userId
-      // })
-      // :servs.filter(serv =>{return serv.client_id === userId
-      // })
-      this.setState({
-        services: servs,
-        dispServs: servs,
-      })
-    })
+    // ////////////////////////SERVICES////////////////////////////
+    // fetch('http://localhost:3000/services', {
+    //   method: 'GET',
+    //   headers: {
+    //     Authorization: `Bearer ${localStorage.token}`
+    //   }
+    // })
+    // .then(res => res.json())
+    // .then(servs => {
+    //   // userType === "p"
+    //   // ?servs.filter(serv =>{return serv.professional_id === userId
+    //   // })
+    //   // :servs.filter(serv =>{return serv.client_id === userId
+    //   // })
+    //   this.setState({
+    //     services: servs,
+    //     dispServs: servs,
+    //   })
+    // })
   }
 
 
@@ -126,13 +125,12 @@ class App extends React.Component{
 
         <NavBar />
         <Route path='/appointments' render={(routerProps)=> <ApptContainer appts={this.state.dispAppts} {...routerProps}/>}/>
-        <Route path='/schedule/new' render={(routerProps)=> <AppointForm {...routerProps}/>}/>
         <Route path='/signup' render={(routerProps)=> <SignUp {...routerProps}/>}/>
-        <Route path='/login' render={(routerProps)=> <Login {...routerProps}/>}/>
+        <Route path='/login' render={(routerProps)=> <Login {...routerProps} />}/>
         <Route path='/schedule' render={(routerProps)=> <Calendar data={this.state.data} {...routerProps}/>}/>
         <Route path='/clients' render={(routerProps)=> <ClientContainer clients={this.state.dispClients} {...routerProps}/>}/>
         <Route path='/professionals' render={(routerProps)=> <ProfContainer profs={this.state.dispProfs} {...routerProps}/>}/>
-        <Route path='/services' render={(routerProps)=> <ServicesContainer servs={this.state.dispServs} currentUser={this.state.currentUser} {...routerProps}/>}/>
+        <Route path='/services' render={(routerProps)=> <ServicesContainer servs={this.state.dispServs} {...routerProps}/>}/>
         {/* </Switch> */}
       </div>
       </BrowserRouter>
