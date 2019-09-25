@@ -2,12 +2,6 @@ import React from 'react';
 
 export default class Appointment extends React.Component{
 
-    // formatDateTime = () => {
-    //     let newDT = this.props.appt.startDate.strftime("When: %m/%d/%Y")
-    //     return newDT
-    //     // debugger 
-
-    // }
     
     render(){
         // debugger

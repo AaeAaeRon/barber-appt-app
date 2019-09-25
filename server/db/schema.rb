@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_190327) do
     t.string "service_name"
     t.integer "price"
     t.string "description"
-    t.interval "duration"
+    t.string "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

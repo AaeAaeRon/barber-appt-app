@@ -20,11 +20,14 @@ class NavBar extends React.Component{
                 <a href= '/signup' > sign up </a><br />
                 <a href= '/login' > login </a><br />
                 <a href= '/clients' > clients </a><br />
-                <a href= '/professionals' > pros </a><br />
+                {/* <a href= '/professionals' > pros </a><br /> */}
                 <a href= '/services' > services </a><br />
-                <a href= '/services/new' > add new service </a><br />
+                <a href= '/new-service' > add new service </a><br />
                 <a href= '/appointments' > appts </a><br />
-                <a href= '/appointments/new' > add new appt </a><br />
+                {/* <a href= '/new-appt' > make appt </a><br /> */}
+                <a href= '/professionals' > make appt </a><br />
+
+
                 <button onClick={this.logout}> logout </button><br />
             </div>
             </BrowserRouter>

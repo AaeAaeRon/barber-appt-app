@@ -5,7 +5,7 @@ class CreateServices < ActiveRecord::Migration[6.0]
       t.string :service_name
       t.integer :price
       t.string :description
-      t.interval :duration
+      t.string :duration
 
       t.timestamps
     end

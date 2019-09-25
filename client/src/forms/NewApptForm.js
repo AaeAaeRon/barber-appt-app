@@ -1,4 +1,5 @@
 import React from 'react';
+import DateTimePicker from '../childComps/DateTimePicker'
 
 export default class AppointForm extends React.Component{
 
@@ -32,7 +33,9 @@ export default class AppointForm extends React.Component{
     render(){
         return(
             <div>
-                <form onSubmit={(e) => this.addAppt(e)}>
+                {/* <DateTimePicker /> */}
+            {localStorage.token
+            ?<form onSubmit={(e) => this.addAppt(e)}>
                     Appt time:<br/>
                     <input onChange={this.handleChange} type="text" name="startDate" />
                     <br/>
@@ -45,6 +48,9 @@ export default class AppointForm extends React.Component{
                     <br />
                     <input type="submit" value="Submit"/>
                 </form> 
+            :<h4>Please log in</h4>
+            }
+                
 
             </div>
         )
