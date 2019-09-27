@@ -1,5 +1,6 @@
 import React from 'react';
-import DateTimePicker from '../childComps/DateTimePicker'
+import DateTimePicker from '../mainComps/DateTime'
+import { formatMs } from '@material-ui/core/styles';
 
 export default class AppointForm extends React.Component{
 
@@ -9,7 +10,7 @@ export default class AppointForm extends React.Component{
         })
     }
 
-    ///////////////NEW SERVICE FORM SUBMIT////////////////
+    ///////////////NEW APPT FORM POST REQUEST////////////////
     addAppt = (e) => {
         e.preventDefault()
         console.log('hi')
@@ -20,16 +21,23 @@ export default class AppointForm extends React.Component{
             Authorization: `Bearer ${localStorage.token}`
         },
         body: JSON.stringify({
-            // professional_id: localStorage.userId,
-            // service_name: this.state.service_name,
-            // price: this.state.price,
-            // description: this.state.description,
-            // duration: this.state.duration,
+            // client_id: localStorage.userId,
+            // c_name: something,
+            // professional_id: something,
+            // p_name: something,
+            // service_id: something,
+            // s_name: something,
+            // price: something,
+            // startDate: formatedDate,
+            // endDate: something,
+            // title: something,
+            // duration: something,
         })
         })
         .then(res => res.json())
         .then(console.log)
     }
+
     render(){
         return(
             <div>

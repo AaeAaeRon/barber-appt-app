@@ -21,7 +21,7 @@ class NavBar extends React.Component{
                 <a href= '/login' > login </a><br />
                 <a href= '/clients' > clients </a><br />
                 {/* <a href= '/professionals' > pros </a><br /> */}
-                <a href= '/services' > services </a><br />
+                {/* <a href= '/services' > services </a><br /> */}
                 <a href= '/new-service' > add new service </a><br />
                 <a href= '/appointments' > appts </a><br />
                 {/* <a href= '/new-appt' > make appt </a><br /> */}

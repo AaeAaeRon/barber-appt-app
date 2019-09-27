@@ -21,13 +21,12 @@ ActiveRecord::Schema.define(version: 2019_09_16_190327) do
     t.integer "professional_id"
     t.string "p_name"
     t.integer "service_id"
-    t.string "s_name"
     t.integer "price"
     t.string "startDate"
     t.string "endDate"
     t.string "title", default: "null"
     t.boolean "allDay", default: false
-    t.string "duration"
+    t.string "duration", default: "1 hour"
     t.boolean "canceled", default: false
     t.string "cancellation_reason", default: "null"
     t.datetime "created_at", precision: 6, null: false
@@ -62,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_190327) do
     t.integer "price"
     t.string "description"
     t.string "duration"
+    t.boolean "show", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

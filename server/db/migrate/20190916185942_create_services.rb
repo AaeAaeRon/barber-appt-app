@@ -6,6 +6,7 @@ class CreateServices < ActiveRecord::Migration[6.0]
       t.integer :price
       t.string :description
       t.string :duration
+      t.boolean :show, :default => false
 
       t.timestamps
     end

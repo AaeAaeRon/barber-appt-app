@@ -7,10 +7,9 @@ import Login from './mainComps/Login'
 import Calendar from './mainComps/Calendar'
 import ClientContainer from './containers/ClientContainer'
 import ProfContainer from './containers/ProfContainer'
-import ServicesContainer from './containers/ServicesContainer'
-import ApptContainer from './containers/ApptContainer'
 import NewServForm from './forms/NewServForm'
-import NewApptForm from './forms/NewApptForm'
+import LandingPg from './mainComps/LandingPg'
+import Footer from './mainComps/Footer'
 
 class App extends React.Component{ 
   // debugger
@@ -20,6 +19,7 @@ class App extends React.Component{
     this.state = {
       appts: [], //filtered
       dispAppts: [], //filtered
+      allAppts: [],
 
       clients: [],
       dispClients: [],
@@ -27,12 +27,11 @@ class App extends React.Component{
       pros: [],
       dispPros: [],
 
-      servs: [], 
-      dispServs: [], 
+
 
     }
   }
-
+  
   
   //////// FETCHES DATA BASED ON LOGGED IN USER /////////
   componentDidMount(){
@@ -46,7 +45,7 @@ class App extends React.Component{
     .then(res => res.json())    
     .then(appts => {
       let a = appts.filter(appt => {
-      if(localStorage.userType === "c"){
+      if(localStorage && localStorage.userType === "c"){
         return appt.client_id === localStorage.userId
       }
       else{
@@ -56,6 +55,7 @@ class App extends React.Component{
       this.setState({
         appts: a,
         dispAppts: a,
+        allAppts: appts,
       })
     })
 
@@ -88,39 +88,7 @@ class App extends React.Component{
         pros: profs,
         dispPros: profs,
       })
-    })
-
-    //////////////////////SERVICES////////////////////////////
-    fetch('http://localhost:3000/services', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    })
-    .then(res => res.json())
-    .then(servs => {
-      this.setState({
-        services: servs,
-        dispServs: servs,
-      })
-    })
-    // .then(servs =>{
-    //   let s = servs.filter(serv => {
-    //     if (localStorage.userType === 'p'){
-    //       return serv.professional_id === localStorage.userId
-    //     }
-    //     else {
-    //       return null
-    //     }
-    //   })
-
-    //   this.setState({
-    //     services: s,
-    //     dispServs: s,
-    //   })
-    // })
-      
-    
+    })    
   }
 
 
@@ -131,16 +99,15 @@ class App extends React.Component{
         {/* <Switch> */}
 
         <NavBar />
-        <Route exact path='/appointments' render={(routerProps)=> <ApptContainer appts={this.state.dispAppts} {...routerProps}/>}/>
+        <Route exact path='/' render={(routerProps)=> <LandingPg {...routerProps}/>}/>
+
         <Route path='/signup' render={(routerProps)=> <SignUp {...routerProps}/>}/>
         <Route path='/login' render={(routerProps)=> <Login {...routerProps} />}/>
-        <Route path='/schedule' render={(routerProps)=> <Calendar data={this.state.data} {...routerProps}/>}/>
+        <Route path='/schedule' render={(routerProps)=> <Calendar data={this.state.allAppts} {...routerProps}/>}/>
         <Route path='/clients' render={(routerProps)=> <ClientContainer clients={this.state.dispClients} {...routerProps}/>}/>
         <Route path='/professionals' render={(routerProps)=> <ProfContainer profs={this.state.dispPros} {...routerProps}/>}/>
-        <Route exact path='/services' render={(routerProps)=> <ServicesContainer servs={this.state.dispServs} {...routerProps}/>}/>
         <Route path='/new-service' render={(routerProps)=> <NewServForm  {...routerProps}/>}/>
-        <Route path='/new-appt' render={(routerProps)=> <NewApptForm  {...routerProps}/>}/>
-    
+        <Footer />
         {/* </Switch> */}
       </div>
       </BrowserRouter>

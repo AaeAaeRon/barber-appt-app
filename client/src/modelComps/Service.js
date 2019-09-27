@@ -1,20 +1,39 @@
 import React from 'react';
+import DateTime from '../mainComps/DateTime'
 
 export default class Service extends React.Component{
 
-    makeAppt = () => {
-        console.log(this)
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            display: false,
+             
+        }
     }
+
+    handleClick = () => {
+        // console.log(this) 
+        this.setState({
+            display: !this.state.display,
+        })
+    }
+
     render(){
         return(
             <div>
                 <br/><br/>
                 <b>Please pick a service</b>
                 <br/><br/>
-                <button onClick={this.makeAppt}>{this.props.service.service_name}</button><br/>
-                Description:<br/> {this.props.service.description}<br/>
-                Duration: {this.props.service.duration}<br/>
+                <b>{this.props.service.service_name}</b><br/>
+                <b>Price:</b> ${this.props.service.price}<br/>
+                <b>Description:</b><br/> {this.props.service.description}<br/>
+                <b>Duration:</b> {this.props.service.duration}<br/>
+                <button onClick={this.handleClick}>Pick a Time</button><br/>
+
+                {this.state.display
+                ?<DateTime  {...this.props} {...this.props} />
+                : null
+                }
                 <br/><br/>
             </div>
         )

@@ -8,7 +8,7 @@ class AuthController < ApplicationController
         client = Client.find_by(email: params[:email])
 
         if client && client.authenticate(params[:password])
-            render json: {email: client.email, token: encode_token("#{client.id}"), id: client.id, type: client.userType }
+            render json: {email: client.email, token: encode_token("#{client.id}"), id: client.id, type: client.userType, name: client.first_name }
         else 
             render json: {error: 'Invalid email or password'}
         end 
@@ -20,7 +20,7 @@ class AuthController < ApplicationController
         professional = Professional.find_by(email: params[:email])
 
         if professional && professional.authenticate(params[:password])
-            render json: {email: professional.email, token: encode_token("#{professional.id}"), id: professional.id, type: professional.userType }
+            render json: {email: professional.email, token: encode_token("#{professional.id}"), id: professional.id, type: professional.userType, name: professional.first_name }
         else 
             render json: {error: 'Invalid email or password'}
         end

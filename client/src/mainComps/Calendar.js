@@ -139,7 +139,7 @@ export default class Calendar extends React.Component{
           <WeekView 
             startDayHour={8}
             endDayHour={18}
-            timeTableCellComponent={TimeTableCell}
+            // timeTableCellComponent={TimeTableCell}
             dayScaleCellComponent={DayScaleCell}
           />
 
