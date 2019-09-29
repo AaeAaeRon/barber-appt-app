@@ -1,6 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-export default class Login extends React.Component{
+class Login extends React.Component{
+
+   
 
     constructor(){
         super()
@@ -16,6 +19,10 @@ export default class Login extends React.Component{
             [e.target.name]: e.target.value
         })
     }
+
+    
+
+    
 
     login = (e) => {
         e.preventDefault()
@@ -49,10 +56,18 @@ export default class Login extends React.Component{
             localStorage.setItem('name', data.name)
 
         })
+
+        
+        this.props.history.push('/professionals')
+    
     }
 
+    
+    
+
     render(){
-    // console.log(this)
+        console.log(this)
+
 
         return(
             <div>
@@ -73,3 +88,4 @@ export default class Login extends React.Component{
         )
     }
 }
+export default withRouter(Login)

@@ -115,7 +115,7 @@ const EditButton = withStyles(styles, { name: 'EditButton' })(
 export default class Calendar extends React.Component{
 
   render(){
-
+console.log(this)
 
     return(
         
@@ -123,7 +123,7 @@ export default class Calendar extends React.Component{
       {localStorage.token
       ?<Paper >
         <Scheduler
-          height={593}
+          height={560}
           data={this.props.data}
           // data = {[
           // { startDate: '2019-09-19 10:00', endDate: '2019-09-19 11:00', title: 'Meeting' },

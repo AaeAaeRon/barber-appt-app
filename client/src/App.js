@@ -8,8 +8,10 @@ import Calendar from './mainComps/Calendar'
 import ClientContainer from './containers/ClientContainer'
 import ProfContainer from './containers/ProfContainer'
 import NewServForm from './forms/NewServForm'
-import LandingPg from './mainComps/LandingPg'
-import Footer from './mainComps/Footer'
+import Home from './mainComps/Home'
+// import Footer from './mainComps/Footer'
+import StickyFooter from './mainComps/StickyFooter'
+
 
 class App extends React.Component{ 
   // debugger
@@ -44,17 +46,17 @@ class App extends React.Component{
     })
     .then(res => res.json())    
     .then(appts => {
-      let a = appts.filter(appt => {
-      if(localStorage && localStorage.userType === "c"){
-        return appt.client_id === localStorage.userId
-      }
-      else{
-        return appt.professional_id === localStorage.userId
-      }
-      })
+      // let a = appts.filter(appt => {
+      // if(localStorage && localStorage.userType === "c"){
+      //   return appt.client_id === localStorage.userId
+      // }
+      // else{
+      //   return appt.professional_id === localStorage.userId
+      // }
+      // })
       this.setState({
-        appts: a,
-        dispAppts: a,
+        // appts: a,
+        // dispAppts: a,
         allAppts: appts,
       })
     })
@@ -96,19 +98,18 @@ class App extends React.Component{
     return (
       <BrowserRouter>
       <div className="App">
-        {/* <Switch> */}
+      
 
         <NavBar />
-        <Route exact path='/' render={(routerProps)=> <LandingPg {...routerProps}/>}/>
-
+        <Route exact path='/' component={Home}/>
         <Route path='/signup' render={(routerProps)=> <SignUp {...routerProps}/>}/>
         <Route path='/login' render={(routerProps)=> <Login {...routerProps} />}/>
         <Route path='/schedule' render={(routerProps)=> <Calendar data={this.state.allAppts} {...routerProps}/>}/>
         <Route path='/clients' render={(routerProps)=> <ClientContainer clients={this.state.dispClients} {...routerProps}/>}/>
         <Route path='/professionals' render={(routerProps)=> <ProfContainer profs={this.state.dispPros} {...routerProps}/>}/>
         <Route path='/new-service' render={(routerProps)=> <NewServForm  {...routerProps}/>}/>
-        <Footer />
-        {/* </Switch> */}
+        {/* <Footer /> */}
+        <StickyFooter/>
       </div>
       </BrowserRouter>
     )
