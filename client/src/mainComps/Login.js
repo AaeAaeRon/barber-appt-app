@@ -24,7 +24,7 @@ class Login extends React.Component{
 
     
 
-    login = (e) => {
+    login = (e, props) => {
         e.preventDefault()
         // debugger
         let url = ""
@@ -71,19 +71,20 @@ class Login extends React.Component{
 
         return(
             <div>
-                <form onSubmit={(e) => this.login(e)}>
-                    <p>Are you logging into a Client or Professional Account?</p>
-                    <input  type="radio" onChange={this.handleChange} defaultChecked='true' value='client' name="account_type" /> Client<br/>
-                    <input  type="radio" onChange={this.handleChange} value='professsional' name="account_type" /> Professional<br/>
-                    <br/>
-                    email:<br/>
-                    <input onChange={this.handleChange} type="text" name="email" />
-                    <br/>
-                    password:<br/> 
-                    <input onChange={this.handleChange} type="password" name="password"/>
-                    <br/>
-                    <input type="submit" value="Submit"/>
-                </form> 
+                <br>
+                
+                </br>
+                <form onSubmit={(e) => this.login(e)} id="login-form" className="border border-light p-5">
+                    <p className="h4 mb-4 text-center">Login</p>
+                    <input type="text" onChange={this.handleChange} name="email" id="defaultLoginForm" className="form-control mb-4" placeholder="Email"/>
+                    <input type="password" onChange={this.handleChange} name="password" id="defaultLoginForm" className="form-control mb-4" placeholder="Password"/>
+                    <button href='/login' className="btn btn-info btn-block my-4 btn-dark"  type="submit">Sign in</button>
+                    <div className="text-center">
+                        <p>Not a member?
+                            <a href="/signup"> Register</a>
+                        </p>
+                    </div>
+                </form>
             </div>
         )
     }

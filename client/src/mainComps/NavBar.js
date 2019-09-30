@@ -14,28 +14,22 @@ class NavBar extends React.Component{
 
     logout = (props) => {
         localStorage.clear()
-        // this.props.history.replace('/login')
+        // this.props.history.push('/')
 
     }
 
     render(){
-       
-
-      
-       
         return(
-            <div>
-
                 <div class="navbar navbar-expand navbar-fixed-top" >
                     <div class="container">
                         <center>
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="/"><b>WebSchedge</b></a>
+                                <a class="navbar-brand" href="/"><b>BookdBarbr</b></a>
                             </div>
                             <div class="navbar-collapse collapse" id="navbar-main">
                                 <ul class="nav navbar-nav">
                                     {localStorage.token 
-                                    ?<li class="active"><a href= '/schedule' > Calendar </a>
+                                    ?<li ><a href= '/schedule' > Calendar </a>
                                     </li>
                                     :null
                                     }
@@ -60,8 +54,6 @@ class NavBar extends React.Component{
                                     }
                                     
                                     
-                                   
-                                    
                                     {localStorage.token
                                     
                                     ?<li class="dropdown">
@@ -84,16 +76,10 @@ class NavBar extends React.Component{
                             </div>
                         </center>
                     </div>
-                </div>
-                                
-                <br />
-                
-                {/* <a href= '/clients' > clients </a><br /> */}
-                
-                
+                </div>  
 
-
-            </div>
+        
+                // {/* <a href= '/clients' > clients </a><br /> */}
         )
     }
 }

@@ -20,7 +20,7 @@ export default class Service extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className='service'>
                 <br/><br/>
                 <b>Please pick a service</b>
                 <br/><br/>

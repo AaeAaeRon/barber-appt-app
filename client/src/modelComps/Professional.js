@@ -45,12 +45,13 @@ export default class Professional extends React.Component{
     render(){
         return(
             
-            <div>
-                <h4>Professional Info</h4><br />
-                <b>Name:</b> {this.props.prof.first_name}<br />
-                <b>Contact Number:</b> {this.props.prof.mobile_num} <br />
-                <b>email address:</b> {this.props.prof.email} <br />
-                <button onClick={ () => this.handleClick(this.props.prof.id)}> Make Appointment </button><br />
+            <div className='pro'>
+                <b>Name:</b> <br />{this.props.prof.first_name } {this.props.prof.last_name}<br />
+                <b>Contact Number:</b><br /> {this.props.prof.mobile_num} <br />
+                <b>email address:</b><br /> {this.props.prof.email} <br />
+                <button onClick={ () => this.handleClick(this.props.prof.id)}> See Services </button><br />
+                <br/>
+            
                 
                 {this.state.display
                 ?<ServicesContainer {...this.props} servs={this.state.dispServs} />

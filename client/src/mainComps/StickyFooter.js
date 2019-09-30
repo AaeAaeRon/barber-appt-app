@@ -1,18 +1,15 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        WebSchedge
+        BookedBarbr
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -27,8 +24,8 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '80vh',
-    height: '60px',
+    // minHeight: '80vh',
+    height: '55px',
     lineHeight: '60px', 
   },
   main: {
@@ -38,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   footer: {
     padding: theme.spacing(2),
     marginTop: 'auto',
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#444444',
   },
   button: {
     margin: theme.spacing(1),
@@ -59,6 +56,12 @@ export default function StickyFooter() {
           <Copyright />
         </Container>
       </footer>
+
+      {/* <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+          <small>Copyright &copy; Your Website</small>
+        </div>
+      </footer> */}
     </div>
   );
 }

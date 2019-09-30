@@ -2,44 +2,86 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .App-link {
-  color: #61dafb;
+  color: black;
 }
 
-html, body {padding:0; margin:0; height:100%;}
-/* footer{position: absolute; bottom: 0; left: 0; right: 0;} */
+html, body {
+  
+  padding:0; 
+  margin:0; 
+  height:100%;
+  /* background-image: url("https://cdn3.vectorstock.com/i/1000x1000/88/07/seamless-pattern-for-barbershop-black-background-vector-18098807.jpg"); */
+  
+}
 
 /* Style the navbar */
 .navbar {
-  overflow: hidden;
-  background-color: #CACACA;
+  /* overflow: hidden; */
+  background-color: #444444;
+  max-height: 50px;
+  /* padding: 25px; */
+  margin: -1px;
+  
 }
 
 /* Navbar links */
 .navbar a {
   display: block;
   color: black;
-  padding: 14px 16px;
+  padding: 16px 18px;
   font-size: 14px;
+
   
 }
+.navbar button {
+ 
+  padding-top: 15.2px;
+  font-size: 13.7px;
+  
+}
+
+.navbar-brand {
+  text-align: left;
+}
+
+.proContainer {
+  /* filter: opacity(30%); */
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  height: 490px;
+  position: absolute;
+  left: 10px;
+  width: auto;
+  padding: 10px;
+  
+}
+
+.pro{
+  padding: 5px;
+  margin: 10px;
+}
+
+.serviceCont{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  position: fixed;
+  float: right;
+  width: auto;
+  padding: 0px;
+  
+}
+
+.service{
+  
+  padding: 5px;
+  margin: 10px;
+}
+
+
+
 
 
 

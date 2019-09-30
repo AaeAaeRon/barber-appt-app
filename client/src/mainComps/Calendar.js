@@ -11,6 +11,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
+
+
 const style = theme => ({
     todayCell: {
       backgroundColor: fade(theme.palette.primary.main, 0.1),
@@ -110,12 +112,50 @@ const EditButton = withStyles(styles, { name: 'EditButton' })(
 
 
 
-
-
 export default class Calendar extends React.Component{
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      appts: [], //filtered
+      dispAppts: [], //filtered
+      allAppts: [],
+    }
+  }
+  ///////////////////////APPTS/////////////////////////////
+  componentWillMount(){
+
+    fetch('http://localhost:3000/appointments', {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.token}`
+    }})
+    .then(res => res.json())    
+    .then(appts => {
+      // let a = appts.filter(appt => {
+      
+        // if(!!localStorage.token === true && localStorage.userType === "c"){
+        //   return appt.client_id === localStorage.userId
+        // }
+        // else if(!!localStorage.token === true && localStorage.userType === "p"){
+        //   return appt.professional_id === localStorage.userId
+        // }
+        // else{
+        //   return null
+        // }
+
+      // })
+      this.setState({
+        // appts: a,
+        // dispAppts: a,
+        allAppts: appts,
+      })
+    })
+  }
+  
+
   render(){
-console.log(this)
+    console.log(this)
 
     return(
         
@@ -123,8 +163,8 @@ console.log(this)
       {localStorage.token
       ?<Paper >
         <Scheduler
-          height={560}
-          data={this.props.data}
+          height={590}
+          data={this.state.allAppts}
           // data = {[
           // { startDate: '2019-09-19 10:00', endDate: '2019-09-19 11:00', title: 'Meeting' },
           // { startDate: '2019-09-20 12:00', endDate: '2019-09-19 13:30', title: 'Go to a gym' },

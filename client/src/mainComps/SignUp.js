@@ -1,16 +1,14 @@
 import React from 'react';
-// import {BrowserRouter,Route} from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
-export default class SignUp extends React.Component{
+
+class SignUp extends React.Component{
 
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
-
-    
-    
 
     signup = (e) => {
         e.preventDefault()
@@ -49,38 +47,53 @@ export default class SignUp extends React.Component{
                 }
             })
         })
-
-        
-
+        this.props.history.push('/login')
     }
 
     render(){
         return(
             <div>
-            
-                <form onSubmit={(e) => this.signup(e)}>
-                    First name:<br/>
-                    <input onChange={this.handleChange} type="text" name="first_name" />
-                    <br/>
-                    Last name:<br/>
-                    <input onChange={this.handleChange} type="text" name="last_name" />
-                    <br/>
-                    Mobile number:<br/>
-                    <input onChange={this.handleChange} type="tel" name="mobile_num" />
-                    <br/>
-                    email:<br/>
-                    <input onChange={this.handleChange} type="text" name="email" />
-                    <br/>
-                    password:<br/> 
-                    <input onChange={this.handleChange} type="password" name="password"/>
-                    <br/>
-                    
-                    <p>Is this a Client or Professional Account?</p>
+                <br>     
+                </br>
+                <form onSubmit={(e) => this.signup(e)} id='sign-up' className="border border-light p-5" >
+                    <p className="h4 mb-4 text-center">Sign Up!</p>
+
+                    <input type="text" onChange={this.handleChange} 
+                        name="first_name" id="defaultSignUpForm" 
+                        className="form-control mb-4" placeholder="First Name" 
+                    />
+
+                    <input type="text" onChange={this.handleChange} 
+                        name="last_name" id="defaultSignUpForm" 
+                        className="form-control mb-4" placeholder="Last Name" 
+                    />
+
+                    <input type="tel" onChange={this.handleChange} 
+                        name="mobile_num" id="defaultSignUpForm" 
+                        className="form-control mb-4" placeholder="Mobile Number" 
+                    />
+                    <input type="text" onChange={this.handleChange} 
+                        name="email" id="defaultSignUpForm" 
+                        className="form-control mb-4" placeholder="Email" 
+                    />
+                    <input type="password" onChange={this.handleChange} 
+                        name="password" type="password" id="defaultSignUpForm" 
+                        className="form-control mb-4" placeholder="Password" 
+                    />
+
+                    <h5>Will this be a Client or Professional Account?</h5>
                     <input  type="radio" defaultChecked='true' id ='client' name="account_type" /> Client<br/>
                     <input  type="radio" id = 'professsional' name="account_type" /> Professional<br/>
-                    <input type="submit" value="Submit"/>
-                </form> 
+
+                    <button className="btn btn-info btn-block my-4 btn-dark" type="submit">Register</button>
+                    <div className="text-center">
+                        <p>Already a member?
+                            <a href="/login"> Login</a>
+                        </p>
+                    </div>
+                </form>
             </div>
         )
     }
 }
+export default withRouter(SignUp)
