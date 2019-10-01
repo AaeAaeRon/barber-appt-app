@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+#form_service {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%)
+
+}
+
+#btn {
+  position: absolute;
+  left: 39%;
+  top: 50%;
+  
+}
 
 
 .App-link {
@@ -13,16 +27,14 @@ html, body {
   padding:0; 
   margin:0; 
   height:100%;
-  /* background-image: url("https://cdn3.vectorstock.com/i/1000x1000/88/07/seamless-pattern-for-barbershop-black-background-vector-18098807.jpg"); */
+  background-image: url("https://dreamvillagefa.com/wp-content/uploads/2018/01/white-textured-background.jpg");
   
 }
 
 /* Style the navbar */
 .navbar {
-  /* overflow: hidden; */
   background-color: #444444;
   max-height: 50px;
-  /* padding: 25px; */
   margin: -1px;
   
 }
@@ -48,11 +60,10 @@ html, body {
 }
 
 .proContainer {
-  /* filter: opacity(30%); */
   display: grid;
   grid-template-columns: auto auto auto auto;
   height: 490px;
-  position: absolute;
+  position: fixed;
   left: 10px;
   width: auto;
   padding: 10px;
@@ -64,20 +75,30 @@ html, body {
   margin: 10px;
 }
 
-.serviceCont{
+.apptCont{
   display: grid;
   grid-template-columns: auto auto auto;
+  height: 490px;
   position: fixed;
-  float: right;
+  padding: 20px;
+  margin: 10px;
+}
+
+.serviceCont{
+  display: grid;
+  grid-template-columns: auto auto;
+  position: fixed;
+  right: 10px;
   width: auto;
   padding: 0px;
-  
+  top: 100px;
+  right: 10px;
 }
 
 .service{
   
   padding: 5px;
-  margin: 10px;
+  margin: 20px;
 }
 
 

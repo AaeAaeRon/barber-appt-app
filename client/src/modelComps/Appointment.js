@@ -2,19 +2,29 @@ import React from 'react';
 
 export default class Appointment extends React.Component{
 
+    formatDate = (date) => {
+        
+        return date.slice(0,21)
+    }
+
+   
+    
     
     render(){
         // debugger
         return(
             <div>
-                <h4>Appointment Info</h4>
             
-                <b>Service By:</b>{this.props.appt.p_name} <br />
-                <b>Service:</b> {this.props.appt.title}<br />
-                <b>When:</b> {this.props.appt.startDate}<br />
-                <b>Where:</b><br />
-                <b>Duration:</b> {this.props.appt.duration}<br />
+            
+                <b>Barber:</b><br />{this.props.appt.p_name} <br />
+                <b>Service:</b><br /> {this.props.appt.title}<br />
+                <b>When:</b><br /> {this.formatDate(this.props.appt.startDate)}<br />
+                <b>Duration:</b><br /> {this.props.appt.duration}<br />
+                
+                <button onClick={() => this.props.delete(this.props.appt.id)} type="button" class="btn btn-dark">Delete</button>
+                
                 <br /><br />
+                
 
             </div>
         )

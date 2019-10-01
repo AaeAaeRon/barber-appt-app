@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Spinner } from '@chevtek/react-spinners';
+import { spinnerService } from '@chevtek/react-spinners';
 
 class Login extends React.Component{
 
@@ -9,8 +11,6 @@ class Login extends React.Component{
         super()
         this.state = {
             account_type: "client",
-            currentUser: '',
-            userType: '',
         }
     }
 
@@ -24,7 +24,7 @@ class Login extends React.Component{
 
     
 
-    login = (e, props) => {
+    login = (e) => {
         e.preventDefault()
         // debugger
         let url = ""
@@ -58,7 +58,7 @@ class Login extends React.Component{
         })
 
         
-        this.props.history.push('/professionals')
+        this.props.history.push('/make-appt')
     
     }
 
@@ -71,11 +71,20 @@ class Login extends React.Component{
 
         return(
             <div>
+
+                <Spinner name="mySpinner">
+                    Loading...
+                </Spinner>          
                 <br>
                 
                 </br>
                 <form onSubmit={(e) => this.login(e)} id="login-form" className="border border-light p-5">
                     <p className="h4 mb-4 text-center">Login</p>
+                    <p>Are you logging into a Client or Professional Account?</p>
+                    <input  type="radio" onChange={this.handleChange} defaultChecked='true' value='client' name="account_type" /> Client<br/>
+                    <input  type="radio" onChange={this.handleChange} value='professsional' name="account_type" /> Professional<br/>
+                    <br/>
+
                     <input type="text" onChange={this.handleChange} name="email" id="defaultLoginForm" className="form-control mb-4" placeholder="Email"/>
                     <input type="password" onChange={this.handleChange} name="password" id="defaultLoginForm" className="form-control mb-4" placeholder="Password"/>
                     <button href='/login' className="btn btn-info btn-block my-4 btn-dark"  type="submit">Sign in</button>

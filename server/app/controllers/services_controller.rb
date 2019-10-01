@@ -17,7 +17,7 @@ class ServicesController < ApplicationController
 
     def create
         @service = Service.create(service_params)
-        render json: @service, statu: 201
+        render json: @service, status: 201
     end
 
     def update

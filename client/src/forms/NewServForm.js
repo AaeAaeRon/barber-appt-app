@@ -29,27 +29,46 @@ export default class NewServForm extends React.Component{
         })
         .then(res => res.json())
         .then(console.log)
+
+        alert('Your service has been created')
+        this.props.push.history('/services')
+
     }
 
     render(){
         return(
-            <div>{localStorage.token
-            ?<form onSubmit={(e) => this.addServ(e)}>
-                    Service's name:<br/>
-                    <input onChange={this.handleChange} type="text" name="service_name" />
-                    <br/>
-                    Price:<br/>
-                    <input onChange={this.handleChange} type="text" name="price" />
-                    <br/>
-                    Description:<br/>
-                    <input onChange={this.handleChange} type="tel" name="description" />
-                    <br/>
-                    Time Frame:<br/>
-                    <input onChange={this.handleChange} type="text" name="duration" />
-                    <br/>
-                    <input type="submit" value="Submit"/>
+            <div id='form_service' class="col-xs-4">{localStorage.token && localStorage.userType === 'p'
+            ?<form onSubmit={(e) => this.addServ(e)} >
+                    <label>Service's Name</label>
+
+                    <input onChange={this.handleChange} type="text" class="form-control" 
+                        placeholder="Service Name" name='service_name'
+                    />
+
+                    <label>Price</label>
+
+                    <input onChange={this.handleChange} type="text" class="form-control" 
+                        placeholder="Price ex: 15, 20" name="price"
+                    />
+
+                    <label>Description</label>
+
+                    <input onChange={this.handleChange} type="text" class="form-control" 
+                        placeholder="description of service" name="description"
+                    />
+
+                    <label>Time Frame</label>
+
+                    <input onChange={this.handleChange} type="text" class="form-control" 
+                        placeholder="ex: 1 hour" name="duration"
+                    />
+                    <div class="col-xs-7"> 
+
+                    <button href='/login' id='btn' className="btn  btn-block my-4 btn-dark"  type="submit">ADD SERVICE</button>
+                
+                    </div>
                 </form> 
-            :   <h3>Please log in</h3>
+            :   <h3>You are either not logged in or you do not have access to this page</h3>
             }
                 
             </div>

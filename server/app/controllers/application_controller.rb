@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
     end
     
     def logged_in?
-      !!current_client || !!current_prof
+        !!current_client || !!current_prof 
     end
 
 end

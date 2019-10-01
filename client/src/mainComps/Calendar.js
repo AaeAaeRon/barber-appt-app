@@ -123,7 +123,7 @@ export default class Calendar extends React.Component{
     }
   }
   ///////////////////////APPTS/////////////////////////////
-  componentWillMount(){
+  componentDidUpdate(){
 
     fetch('http://localhost:3000/appointments', {
     method: 'GET',

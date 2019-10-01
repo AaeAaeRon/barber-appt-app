@@ -46,10 +46,10 @@ s18 = Service.create(professional_id: p4.id, service_name: "Edge-up", price: 15,
 s19 = Service.create(professional_id: p5.id, service_name: "Kids Haircut", price: 15, description: '12 and under', duration: '1 hour' )
 s20 = Service.create(professional_id: p6.id, service_name: "Teen Cut", price: 20, description: 'Over 12 years old', duration: '1 hour' )
 
-a1 = Appointment.create(client_id: c1.id, c_name: c1.first_name, professional_id: p1.id, p_name: p1.first_name, service_id: s1.id, price: s1.price, startDate: "09 28 2019 10:00:00 GMT-0500", endDate: "09 28 2019 11:00:00 GMT-0500", duration: s1.duration, title: s1.service_name)
-a2 = Appointment.create(client_id: c1.id, c_name: c1.first_name, professional_id: p1.id, p_name: p1.first_name, service_id: s2.id, price: s2.price, startDate: "09 28 2019 10:00:00 GMT-0500", endDate: "09 28 2019 11:00:00 GMT-0500", duration: s2.duration, title: s2.service_name)
-a3 = Appointment.create(client_id: c1.id, c_name: c1.first_name, professional_id: p1.id, p_name: p1.first_name, service_id: s1.id, price: s1.price, startDate: "09 29 2019 13:00:00 GMT-0500", endDate: "09 29 2019 14:00:00 GMT-0500", duration: s1.duration, title: s1.service_name)
-a4 = Appointment.create(client_id: c2.id, c_name: c2.first_name, professional_id: p1.id, p_name: p1.first_name, service_id: s1.id, price: s1.price, startDate: "09 30 2019 15:00:00 GMT-0500", endDate: "09 30 2019 16:00:00 GMT-0500", duration: s1.duration, title: s1.service_name)
+a1 = Appointment.create(client_id: c1.id, c_name: c1.first_name, professional_id: p1.id, p_name: p1.first_name, service_id: s1.id, price: s1.price, startDate: "Tue Oct 01 2019 09:00:00 GMT-0500 (Central Daylight Time)", endDate: "Tue Oct 01 2019 10:00:00 GMT-0500 (Central Daylight Time)", duration: s1.duration, title: s1.service_name)
+a2 = Appointment.create(client_id: c2.id, c_name: c2.first_name, professional_id: p2.id, p_name: p2.first_name, service_id: s2.id, price: s2.price, startDate: "Thu Oct 03 2019 11:00:00 GMT-0500 (Central Daylight Time)", endDate: "Thu Oct 03 2019 12:00:00 GMT-0500 (Central Daylight Time)", duration: s2.duration, title: s2.service_name)
+a3 = Appointment.create(client_id: c1.id, c_name: c1.first_name, professional_id: p3.id, p_name: p3.first_name, service_id: s3.id, price: s3.price, startDate: "Fri Oct 04 2019 13:00:00 GMT-0500 (Central Daylight Time)", endDate: "Fri Oct 04 2019 14:00:00 GMT-0500 (Central Daylight Time)", duration: s3.duration, title: s3.service_name)
+a4 = Appointment.create(client_id: c2.id, c_name: c2.first_name, professional_id: p4.id, p_name: p4.first_name, service_id: s4.id, price: s4.price, startDate: "Mon Oct 07 2019 15:00:00 GMT-0500 (Central Daylight Time)", endDate: "Mon Oct 07 2019 16:00:00 GMT-0500 (Central Daylight Time)", duration: s4.duration, title: s4.service_name)
 
 
 # THIS IS HOW RUBY CAN FORMAT TIME HOWEVER YOU WOULD LIKE 

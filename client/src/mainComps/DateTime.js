@@ -1,8 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import DatePicker from "react-datepicker"
-import { compareAsc, format } from 'date-fns'
-import moment from 'moment';
+import { Spinner, spinnerService } from '@chevtek/react-spinners';
 import "react-datepicker/dist/react-datepicker.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,13 +13,11 @@ export default class DateTime extends React.Component{
 
   handleChange = date => {
     this.setState({
-      startDate: date
+      startDate: date,
+      
     });
   };
 
-  startDate = (startDate) => {
-
-  }
 
   endDate = (str,index,chr) => {
     if(index > str.length-1) return str;
@@ -33,7 +29,6 @@ export default class DateTime extends React.Component{
   ///////////////MAKE APPT////////////////
   addAppt = (e) => {
     e.preventDefault()
-    console.log(this.state)
     fetch('http://localhost:3000/appointments', {
     method: 'POST',
     headers: {
@@ -53,8 +48,10 @@ export default class DateTime extends React.Component{
       duration: this.props.service.duration,
     })
     })
+    .then(spinnerService.show('mySpinner'))
     .then(res => res.json())
-    .then(console.log)
+
+    alert('Your appointment has been made')
   }
 
   
@@ -69,6 +66,11 @@ export default class DateTime extends React.Component{
     
     return (
       <div>
+
+        <Spinner name="mySpinner">
+          Loading...
+        </Spinner>
+
         <form onSubmit={ this.addAppt }>
           <div className="form-group">
             <DatePicker

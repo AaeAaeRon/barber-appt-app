@@ -20,66 +20,59 @@ class NavBar extends React.Component{
 
     render(){
         return(
-                <div class="navbar navbar-expand navbar-fixed-top" >
-                    <div class="container">
-                        <center>
-                            <div class="navbar-header">
-                                <a class="navbar-brand" href="/"><b>BookdBarbr</b></a>
-                            </div>
-                            <div class="navbar-collapse collapse" id="navbar-main">
-                                <ul class="nav navbar-nav">
-                                    {localStorage.token 
-                                    ?<li ><a href= '/schedule' > Calendar </a>
-                                    </li>
-                                    :null
-                                    }
-                                    
-                                    {localStorage.userType === 'c' 
-                                    ?<li><a href= '/professionals' >Make Appointment </a><br />
-                                    </li>
-                                    :null
-                                    }
+            <div class="navbar navbar-expand navbar-fixed-top" >
+                <div class="container">
+                    <center>
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="/"><b>BookdBarbr</b></a>
+                        </div>
+                        <div class="navbar-collapse collapse" id="navbar-main">
+                            <ul class="nav navbar-nav">
+                                {localStorage.token 
+                                ?<li ><a href= '/schedule' > Calendar </a>
+                                </li>
+                                :null
+                                }
+                                
+                                {localStorage.userType === 'c' 
+                                ?<li><a href= '/make-appt' >Make Appointment </a><br />
+                                </li>
+                                :null
+                                }
 
-                                    {localStorage.token
-                                    ?<li><Button onClick={this.logout} >Logout</Button>
-                                    </li>
-                                    :<li><a href= '/login' > Login </a><br />
-                                    </li>
-                                    }
+                                {localStorage.userType === 'c' 
+                                ?<li><a href= '/appts' >All Appointments </a><br />
+                                </li>
+                                :null
+                                }
 
-                                    {localStorage.token
-                                    ?null
-                                    :<li><a href= '/signup' > Sign Up </a><br />
-                                    </li>
-                                    }
-                                    
-                                    
-                                    {localStorage.token
-                                    
-                                    ?<li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu </a>
-                                        <ul class="dropdown-menu">
-                                            {localStorage.userType === 'p'
-                                            ?<li><a href= '/new-service' > Create a new service </a><br />
-                                            </li>
-                                            :null
-                                            }
-                                            
-                                            <li><a href="#">Another action</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    :null
-                                    }
-                                    
-                                </ul>
-                            </div>
-                        </center>
-                    </div>
-                </div>  
+                                
 
-        
-                // {/* <a href= '/clients' > clients </a><br /> */}
+                                {localStorage.token
+                                ?null
+                                :<li><a href= '/signup' > Sign Up </a><br />
+                                </li>
+                                }
+
+                                {localStorage.userType === 'p'
+                                ?<li><a href= '/new-service' > Create a new service </a><br /><br />
+                                </li>
+                                :null
+                                }
+                                
+                                {localStorage.token
+                                ?<li><Button onClick={this.logout} >Logout</Button>
+                                </li>
+                                :<li><a href= '/login' > Login </a><br />
+                                </li>
+                                }
+                                
+                            </ul>
+                        </div>
+                    </center>
+                </div>
+            </div>  
+            // {/* <a href= '/clients' > clients </a><br /> */}
         )
     }
 }

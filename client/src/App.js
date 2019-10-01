@@ -10,6 +10,9 @@ import ProfContainer from './containers/ProfContainer'
 import NewServForm from './forms/NewServForm'
 import Home from './mainComps/Home'
 import StickyFooter from './mainComps/StickyFooter'
+import ApptContainer from './containers/ApptContainer'
+import { Spinner } from '@chevtek/react-spinners';
+import { spinnerService } from '@chevtek/react-spinners';
 
 
 class App extends React.Component{ 
@@ -83,6 +86,7 @@ class App extends React.Component{
         Authorization: `Bearer ${localStorage.token}`
       }
     })
+    .then(spinnerService.show('mySpinner'))
     .then(res => res.json())
     .then(profs => {
       this.setState({
@@ -90,6 +94,8 @@ class App extends React.Component{
         dispPros: profs,
       })
     })    
+    .then(spinnerService.hide('mySpinner'))
+    
   }
 
 
@@ -97,15 +103,18 @@ class App extends React.Component{
     return (
       <BrowserRouter>
       <div className="App">
-      
+        
 
         <NavBar />
+        
         <Route exact path='/' component={Home}/>
         <Route path='/signup' render={(routerProps)=> <SignUp {...routerProps}/>}/>
         <Route path='/login' render={(routerProps)=> <Login {...routerProps} />}/>
         <Route path='/schedule' render={(routerProps)=> <Calendar {...routerProps}/>}/>
+        <Route path='/appts' render={(routerProps)=> <ApptContainer  {...routerProps}/>}/>
+        
         <Route path='/clients' render={(routerProps)=> <ClientContainer clients={this.state.dispClients} {...routerProps}/>}/>
-        <Route path='/professionals' render={(routerProps)=> <ProfContainer profs={this.state.dispPros} {...routerProps}/>}/>
+        <Route path='/make-appt' render={(routerProps)=> <ProfContainer profs={this.state.dispPros} {...routerProps}/>}/>
         <Route path='/new-service' render={(routerProps)=> <NewServForm  {...routerProps}/>}/>
 
         {/* <Footer /> */}
