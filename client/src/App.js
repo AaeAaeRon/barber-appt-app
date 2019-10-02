@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import NavBar from './mainComps/NavBar'
-import {BrowserRouter,Route, Switch, Link} from 'react-router-dom'
+import {BrowserRouter,Route} from 'react-router-dom'
 import SignUp from './mainComps/SignUp'
 import Login from './mainComps/Login'
 import Calendar from './mainComps/Calendar'
@@ -11,8 +11,6 @@ import NewServForm from './forms/NewServForm'
 import Home from './mainComps/Home'
 import StickyFooter from './mainComps/StickyFooter'
 import ApptContainer from './containers/ApptContainer'
-import { Spinner } from '@chevtek/react-spinners';
-import { spinnerService } from '@chevtek/react-spinners';
 
 
 class App extends React.Component{ 
@@ -38,7 +36,7 @@ class App extends React.Component{
   
   
   //////// FETCHES DATA BASED ON LOGGED IN USER /////////
-  componentDidMount(){
+  async componentDidMount(){
     // ///////////////////////APPTS/////////////////////////////
     // fetch('http://localhost:3000/appointments', {
     //   method: 'GET',
@@ -86,7 +84,6 @@ class App extends React.Component{
         Authorization: `Bearer ${localStorage.token}`
       }
     })
-    .then(spinnerService.show('mySpinner'))
     .then(res => res.json())
     .then(profs => {
       this.setState({
@@ -94,7 +91,6 @@ class App extends React.Component{
         dispPros: profs,
       })
     })    
-    .then(spinnerService.hide('mySpinner'))
     
   }
 
@@ -108,8 +104,8 @@ class App extends React.Component{
         <NavBar />
         
         <Route exact path='/' component={Home}/>
-        <Route path='/signup' render={(routerProps)=> <SignUp {...routerProps}/>}/>
-        <Route path='/login' render={(routerProps)=> <Login {...routerProps} />}/>
+        <Route exact path='/signup' render={(routerProps)=> <SignUp {...routerProps}/>}/>
+        <Route exact path='/login' render={(routerProps)=> <Login {...routerProps} />}/>
         <Route path='/schedule' render={(routerProps)=> <Calendar {...routerProps}/>}/>
         <Route path='/appts' render={(routerProps)=> <ApptContainer  {...routerProps}/>}/>
         
@@ -117,7 +113,6 @@ class App extends React.Component{
         <Route path='/make-appt' render={(routerProps)=> <ProfContainer profs={this.state.dispPros} {...routerProps}/>}/>
         <Route path='/new-service' render={(routerProps)=> <NewServForm  {...routerProps}/>}/>
 
-        {/* <Footer /> */}
         <StickyFooter/>
       </div>
       </BrowserRouter>

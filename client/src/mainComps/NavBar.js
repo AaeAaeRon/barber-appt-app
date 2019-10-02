@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import styled from 'styled-components'
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -20,14 +20,14 @@ class NavBar extends React.Component{
 
     render(){
         return(
-            <div class="navbar navbar-expand navbar-fixed-top" >
-                <div class="container">
+            <div className="navbar navbar-expand navbar-fixed-top" >
+                <div className="container">
                     <center>
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="/"><b>BookdBarbr</b></a>
+                        <div className="navbar-header">
+                            <a id='brand' className="navbar-brand" href="/"><b>BookdBarbr</b></a>
                         </div>
-                        <div class="navbar-collapse collapse" id="navbar-main">
-                            <ul class="nav navbar-nav">
+                        <div className="navbar-collapse collapse" id="navbar-main">
+                            <ul className="nav navbar-nav">
                                 {localStorage.token 
                                 ?<li ><a href= '/schedule' > Calendar </a>
                                 </li>
@@ -61,7 +61,7 @@ class NavBar extends React.Component{
                                 }
                                 
                                 {localStorage.token
-                                ?<li><Button onClick={this.logout} >Logout</Button>
+                                ?<li><a onClick={this.logout} href= '/' > Log out</a><br /><br />
                                 </li>
                                 :<li><a href= '/login' > Login </a><br />
                                 </li>
@@ -76,4 +76,4 @@ class NavBar extends React.Component{
         )
     }
 }
-export default NavBar
+export default withRouter(NavBar)

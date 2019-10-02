@@ -45,19 +45,27 @@ html, body {
   color: black;
   padding: 16px 18px;
   font-size: 14px;
-
-  
-}
-.navbar button {
- 
-  padding-top: 15.2px;
-  font-size: 13.7px;
-  
+  left: 10px;
 }
 
-.navbar-brand {
-  text-align: left;
+div.container{
+  margin-top: 35px;
+
 }
+
+img{
+  margin: -10px;
+  height: auto;
+}
+
+element.style{
+  max-width: auto;
+}
+
+
+
+
+
 
 .proContainer {
   display: grid;

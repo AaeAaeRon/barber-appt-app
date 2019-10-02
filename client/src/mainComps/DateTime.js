@@ -1,6 +1,5 @@
 import React from 'react'
 import DatePicker from "react-datepicker"
-import { Spinner, spinnerService } from '@chevtek/react-spinners';
 import "react-datepicker/dist/react-datepicker.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -48,7 +47,6 @@ export default class DateTime extends React.Component{
       duration: this.props.service.duration,
     })
     })
-    .then(spinnerService.show('mySpinner'))
     .then(res => res.json())
 
     alert('Your appointment has been made')
@@ -67,9 +65,7 @@ export default class DateTime extends React.Component{
     return (
       <div>
 
-        <Spinner name="mySpinner">
-          Loading...
-        </Spinner>
+        
 
         <form onSubmit={ this.addAppt }>
           <div className="form-group">

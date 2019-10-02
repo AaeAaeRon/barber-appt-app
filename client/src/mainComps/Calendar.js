@@ -1,14 +1,13 @@
 import React from 'react';
 // import {BrowserRouter,Route} from 'react-router-dom';
 import { Scheduler, DayView, WeekView, MonthView, Appointments, 
-    DateNavigator, Toolbar,  ViewSwitcher, AllDayPanel, TodayButton, 
-    AppointmentForm, AppointmentTooltip, DragDropProvider,
+    DateNavigator, Toolbar,  ViewSwitcher, TodayButton, 
+    AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import 'typeface-roboto';
 import Paper from '@material-ui/core/Paper';
-import Icon from '@material-ui/core/Icon';
 import { withStyles } from '@material-ui/core/styles';
-import { EditingState, ViewState } from '@devexpress/dx-react-scheduler';
+import { ViewState } from '@devexpress/dx-react-scheduler';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
 
@@ -123,7 +122,7 @@ export default class Calendar extends React.Component{
     }
   }
   ///////////////////////APPTS/////////////////////////////
-  componentDidUpdate(){
+  componentDidMount(){
 
     fetch('http://localhost:3000/appointments', {
     method: 'GET',
@@ -155,7 +154,6 @@ export default class Calendar extends React.Component{
   
 
   render(){
-    console.log(this)
 
     return(
         

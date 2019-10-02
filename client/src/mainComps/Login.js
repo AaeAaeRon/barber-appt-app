@@ -1,7 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Spinner } from '@chevtek/react-spinners';
-import { spinnerService } from '@chevtek/react-spinners';
 
 class Login extends React.Component{
 
@@ -54,27 +52,22 @@ class Login extends React.Component{
             localStorage.setItem('userId', data.id)
             localStorage.setItem('userType', data.type)
             localStorage.setItem('name', data.name)
+            this.props.history.push('/')
 
         })
-
         
-        this.props.history.push('/make-appt')
-    
+
     }
 
     
     
 
     render(){
-        console.log(this)
+        // console.log(this)
 
 
         return(
-            <div>
-
-                <Spinner name="mySpinner">
-                    Loading...
-                </Spinner>          
+            <div>        
                 <br>
                 
                 </br>
