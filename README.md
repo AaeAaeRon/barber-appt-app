@@ -11,7 +11,9 @@ Next you can 'cd' into the client directory and run 'npm install', after that fi
 
 A client can make appointments with barbers and delete them and see their appointments on a calendar as well as on a dedicated appointments page. 
 
-A professional can create new services that they provide and see a calendar of their appointments. 
+A professional can create new services that they provide and see a calendar of their appointments.
+
+A video demo can be found at https://youtu.be/V8a61I4zw-I
 
 Updates to come!
 
