@@ -1,7 +1,7 @@
 # module-5-project
 Version 1.0 10/2/19
 
-This booking app is currently marketed towards barbers at this time was bootstrapped. Later this app will be built out to market to any freelance professional such as tattoo artists, photographers, stylists, makeup artists, etc. 
+This booking app is currently marketed towards barbers at this time. Later this app will be built out to market to any freelance professional such as tattoo artists, photographers, stylists, makeup artists, etc. 
 
 The frontend or 'client' directory was created with Reactjs and the backend or 'server' directory was created using Ruby on Rails. 
 
