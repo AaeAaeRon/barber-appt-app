@@ -15,6 +15,5 @@ A professional can create new services that they provide and see a calendar of t
 
 A video demo can be found at https://youtu.be/V8a61I4zw-I
 
-Updates to come!
 
 
